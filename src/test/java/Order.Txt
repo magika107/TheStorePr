@@ -1,0 +1,20 @@
+Order(
+    id=1,
+    orderSerial=Ab12/17,
+    buyer={"id":0,"name":"mohsen","family":"akbari"},
+
+     user={"id":0,"name":"ali","family":"alipour"},
+
+    orderType=Sell,
+
+    orderItemList=[
+            OrderItem(id=0, product=Product(id=0, title=mobile, brand=null, model=null, serialNumber=null, buyPrice=0), quantity=2, price=100, order=null),
+            OrderItem(id=0, product=Product(id=0, title=laptop, brand=null, model=null, serialNumber=null, buyPrice=0), quantity=3, price=800, order=null)],
+
+    discount=100,
+    pureAmount=2500,
+    paymentList=[
+            Payment(id=0, paymentType=Card, order=null, amount=1000, customer=null, user=null, paymentTime=2025-07-01T19:37:13.716),
+            Payment(id=0, paymentType=Cash, order=null, amount=1600, customer=null, user=null, paymentTime=2025-07-01T19:37:13.716)],
+
+    orderTime=2025-07-01T19:37:13.712)
