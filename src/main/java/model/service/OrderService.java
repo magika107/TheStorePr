@@ -11,7 +11,7 @@ import java.util.List;
 
 public class OrderService implements Service<Order> {
     private OrderItemService orderItemService = new OrderItemService();
-    private PaymentService paymentService = new PaymentService()
+    private PaymentService paymentService = new PaymentService();
 
     @Override
     public void save(Order order) throws Exception {

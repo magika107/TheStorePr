@@ -1,6 +1,7 @@
 package tools;
 
 import model.entity.Customer;
+import model.entity.Product;
 import model.entity.User;
 import model.entity.enums.Gender;
 
@@ -33,6 +34,18 @@ public class EntityMapper {
                 .family(resultSet.getString("FAMILY"))
                 .birthDate(resultSet.getDate("BIRTH_DATE") == null ? null : resultSet.getDate("BIRTH_DATE").toLocalDate())
                 .phoneNumber(resultSet.getString("PHONE_NUMBER"))
+                .build();
+    }
+
+    public static Product productMapper(ResultSet resultSet) throws SQLException {
+        return Product
+                .builder()
+                .id(resultSet.getInt("ID"))
+                .title(resultSet.getString("TITLE"))
+                .brand(resultSet.getString("BRAND"))
+                .model(resultSet.getString("MODEL"))
+                .serialNumber(resultSet.getString("SERIALNUMBER"))
+                .buyPrice(resultSet.getInt("BUY_PRICE"))
                 .build();
     }
 }
