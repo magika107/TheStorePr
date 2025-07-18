@@ -16,6 +16,7 @@ END;
 
 
 
+
 create table users
 (
     id           number primary key,
@@ -96,3 +97,38 @@ create table payments
     payment_time timestamp
 );
 create sequence payment_seq start with 1 increment by 1;
+CREATE OR REPLACE VIEW ORDER_REPORT AS
+SELECT
+    o.ID                 AS ORDER_ID,
+    o.ORDER_SERIAL       AS ORDER_SERIAL,
+    o.ORDER_TYPE         AS ORDER_TYPE,
+    o.ORDER_TIME         AS ORDER_TIME,
+    o.DISCOUNT           AS DISCOUNT,
+    o.PURE_AMOUNT        AS PURE_AMOUNT,
+
+    -- Customer Info
+    c.ID                 AS CUSTOMER_ID,
+    c.NAME               AS CUSTOMER_NAME,
+    c.FAMILY             AS CUSTOMER_FAMILY,
+    c.PHONE_NUMBER       AS CUSTOMER_PHONE,
+
+    -- User Info
+    u.ID                 AS USER_ID,
+    u.NAME               AS USER_NAME,
+    u.FAMILY             AS USER_FAMILY,
+    u.USERNAME           AS USER_USERNAME,
+
+    -- Aggregated Info from order_items
+    (SELECT SUM(oi.QUANTITY)
+     FROM ORDER_ITEMS oi
+     WHERE oi.ORDER_ID = o.ID) AS TOTAL_QUANTITY,
+
+    (SELECT SUM(oi.QUANTITY * oi.PRICE)
+     FROM ORDER_ITEMS oi
+     WHERE oi.ORDER_ID = o.ID) AS TOTAL_PRICE
+
+FROM
+    ORDERS o
+        JOIN CUSTOMERS c ON o.CUSTOMER_ID = c.ID
+        JOIN USERS u     ON o.USER_ID = u.ID;
+

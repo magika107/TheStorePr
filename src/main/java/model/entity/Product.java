@@ -19,6 +19,7 @@ public class Product implements Serializable {
     private int buyPrice;
 
     public String getProductInfo() {
+
         return String.format("%s (%s) - %s : %s ", title, brand, model, serialNumber);
     }
 }

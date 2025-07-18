@@ -3,7 +3,6 @@ package model.service;
 import model.entity.User;
 import model.repository.UserRepository;
 
-import java.util.Collections;
 import java.util.List;
 
 public class UserService implements Service<User> {
@@ -42,7 +41,7 @@ public class UserService implements Service<User> {
     }
 
     @Override
-    public List<User> findAll() throws Exception {
+    public  List<User> findAll() throws Exception {
         try (UserRepository userRepository = new UserRepository()) {
             return userRepository.findAll();
         }
@@ -50,19 +49,19 @@ public class UserService implements Service<User> {
     }
 
     @Override
-    public User findById(int id) throws Exception {
+    public  User findById(int id) throws Exception {
         try (UserRepository userRepository = new UserRepository()) {
             return userRepository.findById(id);
         }
     }
 
-    public List<User> findByNameAndFamily(String name, String family) throws Exception {
+    public static List<User> findByNameAndFamily(String name, String family) throws Exception {
         try (UserRepository userRepository = new UserRepository()) {
             return userRepository.findByNameAndFamily(name, family);
         }
     }
 
-    public User findByUsername(String username) throws Exception {
+    public static User findByUsername(String username) throws Exception {
         try (UserRepository userRepository = new UserRepository()) {
             return userRepository.findByUsername(username);
         }

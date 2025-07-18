@@ -9,27 +9,32 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ConnectionProvider {
+
+    private static BasicDataSource basicDataSource;  // فقط تعریف، بدون مقداردهی اولیه
+
     @Getter
-    private static ConnectionProvider connectionProvider = new ConnectionProvider();
-    private static BasicDataSource basicDataSource = new BasicDataSource();
+    private static final ConnectionProvider connectionProvider = new ConnectionProvider();
 
     private ConnectionProvider() {
-    }
-
-    public Connection getConnection() throws SQLException {
+        basicDataSource = new BasicDataSource();
         basicDataSource.setDriverClassName("oracle.jdbc.OracleDriver");
-        basicDataSource.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
+        basicDataSource.setUrl("jdbc:oracle:thin:@localhost:1521/XEPDB1");  // دقت: اینجا service name است
         basicDataSource.setUsername("java");
         basicDataSource.setPassword("java123");
         basicDataSource.setMinIdle(5);
         basicDataSource.setMaxTotal(20);
+    }
+
+    public Connection getConnection() throws SQLException {
         return basicDataSource.getConnection();
     }
 
-    public int getNextId(Connection connection,  String sequenceName) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("select " + sequenceName + ".nextval from dual");
-        ResultSet resultSet = preparedStatement.executeQuery();
-        resultSet.next();
-        return resultSet.getInt("nextval");
+    public int getNextId(Connection connection, String sequenceName) throws SQLException {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(
+                "select " + sequenceName + ".nextval from dual");
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+            resultSet.next();
+            return resultSet.getInt(1);
+        }
     }
 }
