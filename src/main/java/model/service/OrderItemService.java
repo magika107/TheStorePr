@@ -13,9 +13,10 @@ public class OrderItemService implements Service<OrderItem> {
 
     @Getter
     private static OrderItemService service = new OrderItemService();
-    private OrderItemService() {
 
+    private OrderItemService() {
     }
+
 
     @Override
     public void save(OrderItem orderItem) throws Exception {

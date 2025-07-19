@@ -15,8 +15,9 @@ public class CustomerTest {
                 .phoneNumber("2356563265")
                 .build();
 
-        CustomerService customerService = CustomerService.getService();
-//        customerService.save(customer);
+
+ CustomerService customerService = CustomerService.getService();
+        customerService.save(customer);
 //        Customer cu = customerService.findById(customer.getId());
 //        System.out.println(cu);
 //

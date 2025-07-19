@@ -3,6 +3,8 @@ import model.entity.Order;
 import model.entity.Payment;
 import model.entity.User;
 import model.entity.enums.PaymentType;
+import model.service.PaymentService;
+import model.service.UserService;
 
 import java.time.LocalDateTime;
 
@@ -18,13 +20,14 @@ public class PaymentTest {
                 .builder()
                 .paymentType(PaymentType.Cash)
                 .order(order)
-                .amount(46789)
+                .amount(45498)
                 .customer(customer)
                 .user(user)
                 .paymentTime(LocalDateTime.now())
                 .build();
 
         System.out.println(payment);
+        PaymentService.getService().save(payment);
     }
 }
 

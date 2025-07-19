@@ -1,5 +1,6 @@
 import model.entity.Product;
 import model.service.ProductService;
+import model.service.UserService;
 
 public class ProductTest {
     public static void main(String[] args) throws Exception {
@@ -12,6 +13,7 @@ public class ProductTest {
                 .buyPrice(123)
                 .build();
         System.out.print(product);
+        ProductService.getService().save(product);
 
     }
 }
