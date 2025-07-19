@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class ConnectionProvider {
 
-    private static BasicDataSource basicDataSource;  // فقط تعریف، بدون مقداردهی اولیه
+    private static BasicDataSource basicDataSource;
 
     @Getter
     private static final ConnectionProvider connectionProvider = new ConnectionProvider();
@@ -18,7 +18,7 @@ public class ConnectionProvider {
     private ConnectionProvider() {
         basicDataSource = new BasicDataSource();
         basicDataSource.setDriverClassName("oracle.jdbc.OracleDriver");
-        basicDataSource.setUrl("jdbc:oracle:thin:@localhost:1521/XEPDB1");  // دقت: اینجا service name است
+        basicDataSource.setUrl("jdbc:oracle:thin:@localhost:1521/XEPDB1");
         basicDataSource.setUsername("java");
         basicDataSource.setPassword("java123");
         basicDataSource.setMinIdle(5);

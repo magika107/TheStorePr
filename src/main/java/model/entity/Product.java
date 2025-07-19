@@ -4,6 +4,7 @@ package model.entity;
 import com.google.gson.Gson;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
@@ -11,6 +12,8 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @SuperBuilder
+@ToString
+
 public class Product implements Serializable {
     private int id;
     private String title;

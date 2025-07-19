@@ -3,6 +3,7 @@ package model.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 import model.entity.enums.OrderType;
 
@@ -14,6 +15,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @SuperBuilder
+@ToString
 
 public class Order implements Serializable {
     private int id;
@@ -21,16 +23,12 @@ public class Order implements Serializable {
     private Customer buyer;
     private User user;
     private OrderType orderType;
-
     List<OrderItem> orderItemList;
-
     private int discount;
     private int pureAmount;
-
     List<Payment> paymentList;
-
     private LocalDateTime orderTime;
-
+//Test is Ok.
     public int getOrderTotal(){
         int total=0;
         for (OrderItem orderItem : orderItemList) {

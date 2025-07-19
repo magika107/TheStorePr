@@ -1,0 +1,22 @@
+-- BEGIN
+--     -- حذف Viewها
+--     FOR v IN (SELECT object_name FROM user_objects WHERE object_type = 'VIEW') LOOP
+--             EXECUTE IMMEDIATE 'DROP VIEW "' || v.object_name || '"';
+--         END LOOP;
+--
+--     -- حذف جدول‌ها به همراه constraints
+--     FOR t IN (SELECT object_name FROM user_objects WHERE object_type = 'TABLE') LOOP
+--             EXECUTE IMMEDIATE 'DROP TABLE "' || t.object_name || '" CASCADE CONSTRAINTS';
+--         END LOOP;
+--
+--     -- حذف sequenceها
+--     FOR s IN (SELECT object_name FROM user_objects WHERE object_type = 'SEQUENCE') LOOP
+--             EXECUTE IMMEDIATE 'DROP SEQUENCE "' || s.object_name || '"';
+--         END LOOP;
+--
+--     -- حذف synonymها (در صورت وجود)
+--     FOR syn IN (SELECT object_name FROM user_objects WHERE object_type = 'SYNONYM') LOOP
+--             EXECUTE IMMEDIATE 'DROP SYNONYM "' || syn.object_name || '"';
+--         END LOOP;
+-- END;
+-- /

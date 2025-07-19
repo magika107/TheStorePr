@@ -12,8 +12,6 @@ public class ProductTest {
                 .buyPrice(123)
                 .build();
         System.out.print(product);
-        ProductService product1=new ProductService();
-        product1.save(product);
 
     }
 }

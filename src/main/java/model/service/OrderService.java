@@ -21,7 +21,8 @@ public class OrderService implements Service<Order> {
     public void save(Order order) throws Exception {
         try (OrderRepository orderRepository = new OrderRepository()) {
 
-            orderRepository.save(order);
+            OrderItemService orderItemService = OrderItemService.getService();
+            PaymentService paymentService = PaymentService.getService();
 
             for (OrderItem orderItem : order.getOrderItemList()) {
                 orderItem.setOrder(order);

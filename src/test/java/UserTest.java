@@ -21,8 +21,7 @@ public class UserTest {
                         .password("1689")
                         .build();
 
-//        Save
-        UserService.getService().save(user);
+//        UserService.getService().save(user);
         System.out.println(user);
 
 

@@ -4,6 +4,7 @@ import model.entity.*;
 import model.entity.enums.Gender;
 import model.entity.enums.OrderType;
 import model.entity.enums.PaymentType;
+import model.entity.enums.TransactionType;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -50,9 +51,12 @@ public class EntityMapper {
     }
 
     public static Payment paymentMapper(ResultSet resultSet) throws SQLException {
+//      TransactionType add.
         return Payment
+
                 .builder()
                 .id(resultSet.getInt("ID"))
+                .transactionType(TransactionType.valueOf(resultSet.getString("TRANSACTION_TYPE")))
                 .paymentType(PaymentType.valueOf(resultSet.getString("PAYMENT_TYPE")))
                 .order(Order.builder().id(resultSet.getInt("ORDER_ID")).build())
                 .amount(resultSet.getInt("AMOUNT"))

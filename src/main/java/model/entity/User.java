@@ -1,10 +1,7 @@
 package model.entity;
 
 import com.google.gson.Gson;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
@@ -13,6 +10,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @SuperBuilder
+//@ToString
 
 public class User extends Person implements Serializable {
     private int id;

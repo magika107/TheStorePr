@@ -21,30 +21,35 @@ public class PaymentRepository implements Repository<Payment> {
     public void save(Payment payment) throws Exception {
         payment.setId(ConnectionProvider.getConnectionProvider().getNextId(connection, "payment_seq"));
         preparedStatement = connection.prepareStatement(
-                "insert into PAYMENTS values (?,?,?,?,?,?,?)"
+                "insert into PAYMENTS values (?,?,?,?,?,?,?,?)"
         );
+
         preparedStatement.setInt(1, payment.getId());
-        preparedStatement.setString(2, payment.getPaymentType().name());
-        preparedStatement.setInt(3, payment.getOrder().getId());
-        preparedStatement.setInt(4, payment.getAmount());
-        preparedStatement.setInt(5, payment.getCustomer().getId());
-        preparedStatement.setInt(6, payment.getUser().getId());
-        preparedStatement.setTimestamp(7, Timestamp.valueOf(payment.getPaymentTime()));
+        preparedStatement.setString(2, payment.getTransactionType().name());
+        preparedStatement.setString(3, payment.getPaymentType().name());
+        preparedStatement.setInt(4, payment.getOrder().getId());
+        preparedStatement.setInt(5, payment.getAmount());
+        preparedStatement.setInt(6, payment.getCustomer().getId());
+        preparedStatement.setInt(7, payment.getUser().getId());
+        preparedStatement.setTimestamp(8, Timestamp.valueOf(payment.getPaymentTime()));
         preparedStatement.executeUpdate();
     }
 
     @Override
     public void edit(Payment payment) throws Exception {
         preparedStatement = connection.prepareStatement(
-                "update PAYMENTS SET PAYMENT_TYPE = ?, ORDER_ID=?,AMOUNT=?,CUSTOMER_ID=?,USER_ID=?,PAYMENT_TIME=?" + " WHERE ID = ?"
+                "update PAYMENTS SET  TRANSACTION_TYPE = ?, PAYMENT_TYPE = ?, ORDER_ID = ?, AMOUNT = ?,CUSTOMER_ID = ?, USER_ID = ?, PAYMENT_TIME = ? " + " WHERE ID = ?"
         );
-        preparedStatement.setString(1, payment.getPaymentType().name());
-        preparedStatement.setInt(2, payment.getOrder().getId());
-        preparedStatement.setInt(3, payment.getAmount());
-        preparedStatement.setInt(4, payment.getCustomer().getId());
-        preparedStatement.setInt(5, payment.getUser().getId());
-        preparedStatement.setTimestamp(6, Timestamp.valueOf(payment.getPaymentTime()));
-        preparedStatement.setInt(7, payment.getId());
+
+        preparedStatement.setString(1, payment.getTransactionType().name());
+//      add TransactionType
+        preparedStatement.setString(2, payment.getPaymentType().name());
+        preparedStatement.setInt(3, payment.getOrder().getId());
+        preparedStatement.setInt(4, payment.getAmount());
+        preparedStatement.setInt(5, payment.getCustomer().getId());
+        preparedStatement.setInt(6, payment.getUser().getId());
+        preparedStatement.setTimestamp(7, Timestamp.valueOf(payment.getPaymentTime()));
+        preparedStatement.setInt(8, payment.getId());
         preparedStatement.executeUpdate();
     }
 
