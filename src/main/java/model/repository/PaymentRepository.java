@@ -79,6 +79,7 @@ public class PaymentRepository implements Repository<Payment> {
         }
         return payment;
     }
+
     public Payment findByPaymentTime(String paymentTime) throws Exception {
         Payment payment = null;
         connection = ConnectionProvider.getConnectionProvider().getConnection();
@@ -89,13 +90,16 @@ public class PaymentRepository implements Repository<Payment> {
             payment = EntityMapper.paymentMapper(resultSet);
 
         }
-            resultSet.close();
-            preparedStatement.close();
-            return payment;
+        resultSet.close();
+        preparedStatement.close();
+        return payment;
     }
 
     @Override
     public void close() throws Exception {
-
+        if (preparedStatement != null) {
+            preparedStatement.close();
+        }
+        connection.close();
     }
 }

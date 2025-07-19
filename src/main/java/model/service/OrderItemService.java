@@ -1,5 +1,6 @@
 package model.service;
 
+import lombok.Getter;
 import model.entity.OrderItem;
 import model.repository.OrderItemRepository;
 
@@ -7,6 +8,15 @@ import java.util.Collections;
 import java.util.List;
 
 public class OrderItemService implements Service<OrderItem> {
+
+
+
+    @Getter
+    private static OrderItemService service = new OrderItemService();
+    private OrderItemService() {
+
+    }
+
     @Override
     public void save(OrderItem orderItem) throws Exception {
         try (OrderItemRepository orderItemRepository = new OrderItemRepository()) {
@@ -54,10 +64,5 @@ public class OrderItemService implements Service<OrderItem> {
         try (OrderItemRepository orderItemRepository = new OrderItemRepository()) {
             return orderItemRepository.findByOrderId(orderId);
         }
-    }
-
-    @Override
-    public void close() throws Exception {
-
     }
 }

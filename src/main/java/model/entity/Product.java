@@ -1,6 +1,7 @@
 package model.entity;
 
 
+import com.google.gson.Gson;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
@@ -19,7 +20,11 @@ public class Product implements Serializable {
     private int buyPrice;
 
     public String getProductInfo() {
-
         return String.format("%s (%s) - %s : %s ", title, brand, model, serialNumber);
+    }
+
+    @Override
+    public String toString() {
+        return new Gson().toJson(this);
     }
 }

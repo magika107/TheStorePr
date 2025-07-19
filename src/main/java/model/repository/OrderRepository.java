@@ -88,6 +88,11 @@ public class OrderRepository implements Repository<Order> {
 
     @Override
     public void close() throws Exception {
-
+        if (preparedStatement != null) {
+            preparedStatement.close();
+        }
+        connection.close();
     }
+
 }
+

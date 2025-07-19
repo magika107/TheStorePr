@@ -116,6 +116,10 @@ public class ProductRepository implements Repository<Product> {
 
     @Override
     public void close() throws Exception {
+        if (preparedStatement != null) {
+            preparedStatement.close();
+        }
+        connection.close();
 
     }
 }

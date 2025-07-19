@@ -38,7 +38,7 @@ public class UserRepository implements Repository<User> {
 
     public void edit(User user) throws Exception {
         preparedStatement = connection.prepareStatement(
-                "update USERS set gender=?, name=?, family=?, birth_date=?, phone_number=?, username=?, password=? where id=?"
+                "update USERS set GENDER=?, NAME=?, FAMILY=?, BIRTH_DATE=?, PHONE_NUMBER=?, USERNAME=?, PASSWORD=? where ID=?"
         );
         preparedStatement.setString(1, user.getGender().name());
         preparedStatement.setString(2, user.getName());
@@ -53,7 +53,7 @@ public class UserRepository implements Repository<User> {
 
     public void delete(int id) throws Exception {
         preparedStatement = connection.prepareStatement(
-                "delete from USERS where id=?"
+                "delete from USERS where ID=?"
         );
         preparedStatement.setInt(1, id);
         preparedStatement.execute();

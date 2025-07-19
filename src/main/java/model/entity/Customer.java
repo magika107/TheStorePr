@@ -17,9 +17,4 @@ import java.io.Serializable;
 
 public class Customer extends Person implements Serializable {
     private int id;
-
-    @Override
-    public String toString() {
-        return new Gson().toJson(this);
-    }
 }

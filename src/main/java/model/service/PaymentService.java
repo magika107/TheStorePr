@@ -1,5 +1,6 @@
 package model.service;
 
+import lombok.Getter;
 import model.entity.Payment;
 import model.repository.PaymentRepository;
 
@@ -7,6 +8,12 @@ import java.util.Collections;
 import java.util.List;
 
 public class PaymentService implements Service<Payment>{
+    @Getter
+    private static PaymentService service = new PaymentService();
+
+    private PaymentService() {
+
+    }
     @Override
     public void save(Payment payment) throws Exception {
         try(PaymentRepository paymentRepository = new PaymentRepository()){
@@ -57,10 +64,5 @@ public class PaymentService implements Service<Payment>{
         try(PaymentRepository paymentRepository = new PaymentRepository()){
             return paymentRepository.findByPaymentTime(paymentTime);
         }
-    }
-
-    @Override
-    public void close() throws Exception {
-
     }
 }

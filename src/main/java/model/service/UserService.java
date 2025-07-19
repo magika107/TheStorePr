@@ -1,11 +1,17 @@
 package model.service;
 
+import lombok.Getter;
 import model.entity.User;
 import model.repository.UserRepository;
 
 import java.util.List;
 
 public class UserService implements Service<User> {
+    @Getter
+    private static UserService service = new UserService();
+
+    private UserService() {
+    }
 
     @Override
     public void save(User user) throws Exception {
@@ -30,9 +36,9 @@ public class UserService implements Service<User> {
     @Override
     public void delete(int id) throws Exception {
         try (UserRepository userRepository = new UserRepository()) {
-            if(userRepository.findById(id) != null) {
+            if (userRepository.findById(id) != null) {
                 userRepository.delete(id);
-            }else {
+            } else {
                 throw new Exception("User not found");
             }
 
@@ -41,7 +47,7 @@ public class UserService implements Service<User> {
     }
 
     @Override
-    public  List<User> findAll() throws Exception {
+    public List<User> findAll() throws Exception {
         try (UserRepository userRepository = new UserRepository()) {
             return userRepository.findAll();
         }
@@ -49,7 +55,7 @@ public class UserService implements Service<User> {
     }
 
     @Override
-    public  User findById(int id) throws Exception {
+    public User findById(int id) throws Exception {
         try (UserRepository userRepository = new UserRepository()) {
             return userRepository.findById(id);
         }
@@ -71,11 +77,5 @@ public class UserService implements Service<User> {
         try (UserRepository userRepository = new UserRepository()) {
             return userRepository.findByUsernameAndPassword(username, password);
         }
-    }
-
-
-    @Override
-    public void close() throws Exception {
-
     }
 }

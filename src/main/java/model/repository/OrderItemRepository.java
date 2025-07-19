@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collections;
+
 import java.util.List;
 
 public class OrderItemRepository implements Repository<OrderItem> {
@@ -94,6 +94,10 @@ public class OrderItemRepository implements Repository<OrderItem> {
 
     @Override
     public void close() throws Exception {
-
+        if (preparedStatement != null) {
+            preparedStatement.close();
+        }
+        connection.close();
     }
+
 }

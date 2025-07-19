@@ -1,5 +1,6 @@
 package model.service;
 
+import lombok.Getter;
 import model.entity.Customer;
 import model.repository.CustomerRepository;
 
@@ -7,6 +8,12 @@ import model.repository.CustomerRepository;
 import java.util.List;
 
 public class CustomerService implements Service<Customer> {
+    @Getter
+    private static CustomerService service = new CustomerService();
+
+    private CustomerService() {
+
+    }
     @Override
     public void save(Customer customer) throws Exception {
         try (CustomerRepository customerRepository = new CustomerRepository()) {
@@ -59,10 +66,5 @@ public class CustomerService implements Service<Customer> {
         try (CustomerRepository customerRepository = new CustomerRepository()) {
             return customerRepository.findByNameAndFamily(name, family);
         }
-    }
-
-    @Override
-    public void close() throws Exception {
-
     }
 }

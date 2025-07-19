@@ -1,15 +1,22 @@
 package model.service;
 
+import lombok.Getter;
 import model.entity.Product;
 import model.repository.ProductRepository;
 
-import java.io.Serializable;
-import java.util.Collections;
 import java.util.List;
 
 public class ProductService implements Service<Product> {
+    @Getter
+    private static ProductService service = new ProductService();
+
+    private ProductService() {
+
+    }
+
     @Override
     public void save(Product product) throws Exception {
+
         try (ProductRepository productRepository = new ProductRepository()) {
             productRepository.save(product);
         }
@@ -63,10 +70,5 @@ public class ProductService implements Service<Product> {
         try (ProductRepository productRepository = new ProductRepository()) {
             return productRepository.findByBrandAndModel(brand, model);
         }
-    }
-
-    @Override
-    public void close() throws Exception {
-
     }
 }

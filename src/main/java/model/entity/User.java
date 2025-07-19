@@ -18,11 +18,6 @@ public class User extends Person implements Serializable {
     private int id;
     private String username;
     private String password;
-
-    @Override
-    public String toString() {
-        return new Gson().toJson(this);
-    }
 }
 
 

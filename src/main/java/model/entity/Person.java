@@ -1,5 +1,6 @@
 package model.entity;
 
+import com.google.gson.Gson;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
@@ -20,15 +21,20 @@ public abstract class Person implements Serializable {
     private LocalDate birthDate;
     private String phoneNumber;
 
-    public String getFullName(){
+    public String getFullName() {
         return name + " " + family;
     }
 
-    public String getFaBirthDate(){
+    public String getFaBirthDate() {
         return DateConvertor.miladiToShamsi(birthDate).toString();
     }
 
-    public void setFaBirthDate(String faBirthDate){
+    public void setFaBirthDate(String faBirthDate) {
         birthDate = DateConvertor.shamsiToMiladi(faBirthDate);
+    }
+
+    @Override
+    public String toString() {
+        return new Gson().toJson(this);
     }
 }

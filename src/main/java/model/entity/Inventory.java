@@ -9,6 +9,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 
 public class Inventory {
+    private int id;
     private Product product;
     private int quantity;
 }

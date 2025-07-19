@@ -88,4 +88,27 @@ public class EntityMapper {
                         resultSet.getTimestamp("order_time").toLocalDateTime())
                 .build();
     }
+
+    public static Bank bankMapper(ResultSet resultSet) throws SQLException {
+        return Bank.builder()
+                .id(resultSet.getInt("id"))
+                .amount(resultSet.getInt("amount"))
+                .customer(Customer.builder()
+                        .id(resultSet.getInt("customer_id"))
+                        .build())
+                .payment(Payment.builder()
+                        .id(resultSet.getInt("payment_id"))
+                        .build())
+                .build();
+    }
+
+    public static Inventory inventoryMapper(ResultSet resultSet) throws SQLException {
+        return Inventory.builder()
+                .id(resultSet.getInt("id"))
+                .quantity(resultSet.getInt("quantity"))
+                .product(Product.builder()
+                        .id(resultSet.getInt("product_id"))
+                        .build())
+                .build();
+    }
 }

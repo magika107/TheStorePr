@@ -11,20 +11,20 @@ public class UserTest {
         User user =
                 User
                         .builder()
-//                        .id(89)
+                       .id(8911)
                         .gender(Gender.Male)
                         .name("hamed")
                         .family("aslani")
                         .birthDate(LocalDate.of(1994, 1, 1))
-                        .phoneNumber("456489")
-                        .username("65432")
+                        .phoneNumber("45648911")
+                        .username("654321111")
                         .password("1689")
                         .build();
 
+//        Save
+        UserService.getService().save(user);
+        System.out.println(user);
 
-//       System.out.println(user);
-//
-        UserService user4 = new UserService();
 
 //         System.out.println(user4.findById(5));
 //      user4.save(user);
