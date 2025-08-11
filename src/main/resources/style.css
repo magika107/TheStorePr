@@ -1,6 +1,4 @@
-/* ===========================
-   Tab Pane Styles
-=========================== */
+
 .main-tab-pane {
     -fx-background-color: #f4f6f9;
     -fx-tab-min-height: 35px;
@@ -44,10 +42,6 @@
 
 
 
-
-/* ===========================
-   Other Content Panes Backgrounds
-=========================== */
 
 .customer-content-pane {
     -fx-background-color: #d0f0ea;
@@ -105,10 +99,6 @@
     -fx-background-radius: 10px;
 }
 
-
-/* ===========================
-   Selected Tab Colors (غیر payment)
-=========================== */
 
 
 .tab.user-tab:selected {
@@ -183,9 +173,6 @@
     -fx-background-color: #e67e22; /* نارنجی متوسط */
 }
 
-/* ===========================
-   TableView Styles
-=========================== */
 .table-view {
     -fx-background-color: white;
     -fx-border-color: #ccc;
@@ -216,9 +203,6 @@
     -fx-alignment: CENTER;
 }
 
-/* ===========================
-   ScrollBar Styles
-=========================== */
 .scroll-bar:vertical {
     -fx-background-color: transparent;
     -fx-padding: 0 5px 0 0;
@@ -235,9 +219,7 @@
     -fx-background-radius: 10px;
 }
 
-/* ===========================
-   Buttons
-=========================== */
+
 .button {
     -fx-background-color: #3498db;
     -fx-text-fill: white;
