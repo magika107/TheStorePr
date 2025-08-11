@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<Pane xmlns="http://javafx.com/javafx/8.0.171"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.OrderController"
+      styleClass="order-content-pane"
+      prefHeight="500.0" prefWidth="800.0">
+
+    <children>
+        <!-- فرم اطلاعات سفارش -->
+        <GridPane layoutX="20.0" layoutY="12.0" prefHeight="363.0" prefWidth="280.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" prefWidth="180.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints/>
+            </rowConstraints>
+            <children>
+                <Label text="Order ID"/>
+                <Label text="Order Serial" GridPane.rowIndex="1"/>
+                <Label text="Order Date" GridPane.rowIndex="2"/>
+                <Label text="Order Type" GridPane.rowIndex="3"/>
+                <Label text="Customer" GridPane.rowIndex="4"/>
+                <Label text="User" GridPane.rowIndex="5"/>
+                <Label text="Pure Amount" GridPane.rowIndex="6"/>
+
+                <TextField fx:id="orderIdTxt" GridPane.columnIndex="1"/>
+                <TextField fx:id="orderSerialTxt" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <DatePicker fx:id="orderDatePick" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                <ComboBox fx:id="orderTypeCombo" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                <ComboBox fx:id="customerCombo" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                <ComboBox fx:id="userCombo" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+                <TextField fx:id="pureAmountTxt" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+            </children>
+        </GridPane>
+
+        <!-- دکمه‌های عملیات -->
+        <HBox layoutX="17.0" layoutY="388.0" spacing="20.0">
+            <children>
+                <Button fx:id="saveBtn" text="Save" prefWidth="80.0" prefHeight="40.0"/>
+                <Button fx:id="deleteBtn" text="Delete" prefWidth="80.0" prefHeight="40.0"/>
+                <Button fx:id="editBtn" text="Edit" prefWidth="80.0" prefHeight="40.0"/>
+            </children>
+        </HBox>
+
+        <!-- جدول سفارش‌ها -->
+        <TableView fx:id="orderTab" layoutX="320.0" layoutY="140.0" prefHeight="320.0" prefWidth="450.0">
+            <columns>
+                <TableColumn fx:id="idCol" text="ID" prefWidth="60.0"/>
+                <TableColumn fx:id="serialCol" text="Serial" prefWidth="80.0"/>
+                <TableColumn fx:id="dateCol" text="Date" prefWidth="100.0"/>
+                <TableColumn fx:id="typeCol" text="Type" prefWidth="80.0"/>
+                <TableColumn fx:id="customerCol" text="Customer" prefWidth="120.0"/>
+                <TableColumn fx:id="amountCol" text="Amount" prefWidth="100.0"/>
+            </columns>
+        </TableView>
+
+        <!-- جستجو بر اساس شماره سفارش و مشتری -->
+        <HBox layoutX="320.0" layoutY="25.0" spacing="20.0">
+            <children>
+                <Label text="Search by Serial:"/>
+                <TextField fx:id="serialSearchTxt" prefWidth="100.0"/>
+                <Label text="Search by Customer:"/>
+                <TextField fx:id="customerSearchTxt" prefWidth="120.0"/>
+            </children>
+        </HBox>
+    </children>
+</Pane>

@@ -11,7 +11,7 @@ public class UserTest {
         User user =
                 User
                         .builder()
-                       .id(8911)
+                        .id(8911)
                         .gender(Gender.Male)
                         .name("hamed")
                         .family("aslani")
@@ -21,7 +21,7 @@ public class UserTest {
                         .password("1689")
                         .build();
 
-     UserService.getService().save(user);
+        UserService.getService().save(user);
         System.out.println(user);
 
 

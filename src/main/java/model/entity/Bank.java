@@ -11,6 +11,8 @@ import model.entity.enums.TransactionType;
 @NoArgsConstructor
 @SuperBuilder
 @ToString
+
+
 public class Bank {
     private int id;
     private Customer customer;

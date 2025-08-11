@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.171"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.MainController"
+            prefWidth="800.0" prefHeight="600.0">
+
+    <children>
+        <TabPane fx:id="mainTabPane"
+                 styleClass="main-tab-pane"
+                 tabClosingPolicy="UNAVAILABLE"
+                 tabMinWidth="150"
+                 tabMaxWidth="150"
+                 AnchorPane.topAnchor="0.0"
+                 AnchorPane.bottomAnchor="0.0"
+                 AnchorPane.leftAnchor="0.0"
+                 AnchorPane.rightAnchor="0.0">
+
+            <tabs>
+                <Tab fx:id="userTab" text="User Management" styleClass="user-tab"/>
+                <Tab fx:id="productTab" text="Product Management" styleClass="product-tab"/>
+                <Tab fx:id="customerTab" text="Customer Management" styleClass="customer-tab"/>
+                <Tab fx:id="orderTab" text="Order Management" styleClass="order-tab"/>
+                <Tab fx:id="inventoryTab" text="Inventory Management" styleClass="inventory-tab"/>
+                <Tab fx:id="orderItemTab" text="OrderItem Management" styleClass="orderItemTab-tab"/>
+                <Tab fx:id="bankTab" text="Bank Management" styleClass="bankTab-tab"/>
+                <Tab fx:id="paymentTab" text="Payment Management" styleClass="payment-tab"/>
+
+            </tabs>
+        </TabPane>
+    </children>
+</AnchorPane>

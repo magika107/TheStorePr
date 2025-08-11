@@ -1,11 +1,26 @@
 BEGIN
     BEGIN
+        EXECUTE IMMEDIATE 'DROP TABLE banks CASCADE CONSTRAINTS';
+    EXCEPTION
+        WHEN OTHERS THEN NULL;
+    END;
+    BEGIN
         EXECUTE IMMEDIATE 'DROP TABLE payments CASCADE CONSTRAINTS';
     EXCEPTION
         WHEN OTHERS THEN NULL;
     END;
     BEGIN
         EXECUTE IMMEDIATE 'DROP TABLE order_items CASCADE CONSTRAINTS';
+    EXCEPTION
+        WHEN OTHERS THEN NULL;
+    END;
+    BEGIN
+        EXECUTE IMMEDIATE 'DROP TABLE inventories CASCADE CONSTRAINTS';
+    EXCEPTION
+        WHEN OTHERS THEN NULL;
+    END;
+    BEGIN
+        EXECUTE IMMEDIATE 'DROP VIEW ORDER_REPORT';
     EXCEPTION
         WHEN OTHERS THEN NULL;
     END;
@@ -32,9 +47,25 @@ BEGIN
 END;
 /
 
+-- این بخش، تمام دنباله‌های (sequences) قبلی را حذف می‌کند.
 BEGIN
     BEGIN
+        EXECUTE IMMEDIATE 'DROP SEQUENCE bank_seq';
+    EXCEPTION
+        WHEN OTHERS THEN NULL;
+    END;
+    BEGIN
         EXECUTE IMMEDIATE 'DROP SEQUENCE payment_seq';
+    EXCEPTION
+        WHEN OTHERS THEN NULL;
+    END;
+    BEGIN
+        EXECUTE IMMEDIATE 'DROP SEQUENCE order_item_seq';
+    EXCEPTION
+        WHEN OTHERS THEN NULL;
+    END;
+    BEGIN
+        EXECUTE IMMEDIATE 'DROP SEQUENCE inventory_seq';
     EXCEPTION
         WHEN OTHERS THEN NULL;
     END;
@@ -104,7 +135,7 @@ CREATE TABLE orders
     order_serial NVARCHAR2(20) UNIQUE NOT NULL,
     customer_id  NUMBER REFERENCES customers (id),
     user_id      NUMBER REFERENCES users (id),
-    order_type   NVARCHAR2(20) CHECK (order_type IN ('buy', 'sell')),
+    order_type   NVARCHAR2(20) CHECK (order_type IN ('Buy', 'Sell')),
     discount     NUMBER    DEFAULT 0 CHECK (discount >= 0),
     pure_amount  NUMBER    DEFAULT 0 CHECK (pure_amount >= 0),
     order_time   TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -119,6 +150,7 @@ CREATE TABLE order_items
     price      NUMBER NOT NULL CHECK (price >= 0),
     order_id   NUMBER REFERENCES orders (id)
 );
+CREATE SEQUENCE order_item_seq START WITH 1 INCREMENT BY 1;
 
 CREATE TABLE payments
 (

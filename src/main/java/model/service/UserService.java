@@ -13,7 +13,6 @@ public class UserService implements Service<User> {
     private UserService() {
     }
 
-    @Override
     public void save(User user) throws Exception {
         try (UserRepository userRepository = new UserRepository()) {
             userRepository.save(user);
@@ -21,7 +20,6 @@ public class UserService implements Service<User> {
 
     }
 
-    @Override
     public void edit(User user) throws Exception {
         try (UserRepository userRepository = new UserRepository()) {
             if (userRepository.findById(user.getId()) != null) {
@@ -33,7 +31,6 @@ public class UserService implements Service<User> {
 
     }
 
-    @Override
     public void delete(int id) throws Exception {
         try (UserRepository userRepository = new UserRepository()) {
             if (userRepository.findById(id) != null) {
@@ -46,7 +43,6 @@ public class UserService implements Service<User> {
 
     }
 
-    @Override
     public List<User> findAll() throws Exception {
         try (UserRepository userRepository = new UserRepository()) {
             return userRepository.findAll();
@@ -54,26 +50,25 @@ public class UserService implements Service<User> {
 
     }
 
-    @Override
     public User findById(int id) throws Exception {
         try (UserRepository userRepository = new UserRepository()) {
             return userRepository.findById(id);
         }
     }
 
-    public static List<User> findByNameAndFamily(String name, String family) throws Exception {
+    public List<User> findByNameAndFamily(String name, String family) throws Exception {
         try (UserRepository userRepository = new UserRepository()) {
             return userRepository.findByNameAndFamily(name, family);
         }
     }
 
-    public static User findByUsername(String username) throws Exception {
+    public User findByUsername(String username) throws Exception {
         try (UserRepository userRepository = new UserRepository()) {
             return userRepository.findByUsername(username);
         }
     }
 
-    public static User findByUsernameAndPassword(String username, String password) throws Exception {
+    public User findByUsernameAndPassword(String username, String password) throws Exception {
         try (UserRepository userRepository = new UserRepository()) {
             return userRepository.findByUsernameAndPassword(username, password);
         }

@@ -51,7 +51,6 @@ public class EntityMapper {
     }
 
     public static Payment paymentMapper(ResultSet resultSet) throws SQLException {
-//      TransactionType add.
         return Payment
 
                 .builder()
@@ -62,7 +61,7 @@ public class EntityMapper {
                 .amount(resultSet.getInt("AMOUNT"))
                 .customer(Customer.builder().id(resultSet.getInt("CUSTOMER_ID")).build())
                 .user(User.builder().id(resultSet.getInt("USER_ID")).build())
-                .paymentTime(resultSet.getTimestamp("PAYMENT_TIME").toLocalDateTime())
+                .paymentDateTime(resultSet.getTimestamp("PAYMENT_TIME").toLocalDateTime())
                 .build();
     }
 
@@ -83,7 +82,7 @@ public class EntityMapper {
                 .builder()
                 .id(resultSet.getInt("id"))
                 .orderSerial(resultSet.getString("order_serial"))
-                .buyer(Customer.builder().id(resultSet.getInt("customer_id")).build())
+                .customer(Customer.builder().id(resultSet.getInt("customer_id")).build())
                 .user(User.builder().id(resultSet.getInt("user_id")).build())
                 .orderType(OrderType.valueOf(resultSet.getString("order_type").toUpperCase()))
                 .discount(resultSet.getInt("discount"))

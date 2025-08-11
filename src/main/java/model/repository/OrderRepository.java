@@ -6,7 +6,6 @@ import tools.EntityMapper;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class OrderRepository implements Repository<Order> {
@@ -27,9 +26,17 @@ public class OrderRepository implements Repository<Order> {
 
         preparedStatement.setInt(1, order.getId());
         preparedStatement.setString(2, order.getOrderSerial());
-        preparedStatement.setInt(3, order.getBuyer().getId());
+        preparedStatement.setInt(3, order.getCustomer().getId());
         preparedStatement.setInt(4, order.getUser().getId());
-        preparedStatement.setString(5, order.getOrderType().name());
+        String orderType = order.getOrderType().name();
+        String formattedOrderType = orderType.substring(0, 1).toUpperCase() + orderType.substring(1).toLowerCase();
+        preparedStatement.setString(5, formattedOrderType);
+
+
+        //        preparedStatement.setString(5, order.getOrderType().toString());
+
+
+
         preparedStatement.setInt(6, order.getDiscount());
         preparedStatement.setInt(7, order.getPureAmount());
         preparedStatement.setTimestamp(8, Timestamp.valueOf(order.getOrderTime()));
@@ -43,7 +50,7 @@ public class OrderRepository implements Repository<Order> {
                 "UPDATE ORDERS SET order_serial = ?, customer_id = ?, user_id = ?, order_type = ?, discount = ?, pure_amount = ?, order_time = ? WHERE id = ?"
         );
         preparedStatement.setString(1, order.getOrderSerial());
-        preparedStatement.setInt(2, order.getBuyer().getId());
+        preparedStatement.setInt(2, order.getCustomer().getId());
         preparedStatement.setInt(3, order.getUser().getId());
         preparedStatement.setString(4, order.getOrderType().name());
         preparedStatement.setInt(5, order.getDiscount());

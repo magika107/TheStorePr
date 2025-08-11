@@ -18,7 +18,7 @@ public class ConnectionProvider {
     private ConnectionProvider() {
         basicDataSource = new BasicDataSource();
         basicDataSource.setDriverClassName("oracle.jdbc.OracleDriver");
-        basicDataSource.setUrl("jdbc:oracle:thin:@localhost:1521/XEPDB1");
+        basicDataSource.setUrl("jdbc:oracle:thin:@localhost:1521/XE ");
         basicDataSource.setUsername("java");
         basicDataSource.setPassword("java123");
         basicDataSource.setMinIdle(5);

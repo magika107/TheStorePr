@@ -1,8 +1,5 @@
 package model.repository;
 
-import model.entity.User;
-
-import java.sql.SQLException;
 import java.util.List;
 
 public interface Repository<T> extends AutoCloseable{

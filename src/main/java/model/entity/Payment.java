@@ -16,13 +16,11 @@ import java.time.LocalDateTime;
 
 public class Payment {
     private int id;
-//
     private TransactionType transactionType;
-//
     private PaymentType paymentType;
     private Order order;
     private int amount;
     private Customer customer;
     private User user;
-    private LocalDateTime paymentTime;
+    private LocalDateTime paymentDateTime;
 }

@@ -31,7 +31,7 @@ public class PaymentRepository implements Repository<Payment> {
         preparedStatement.setInt(5, payment.getAmount());
         preparedStatement.setInt(6, payment.getCustomer().getId());
         preparedStatement.setInt(7, payment.getUser().getId());
-        preparedStatement.setTimestamp(8, Timestamp.valueOf(payment.getPaymentTime()));
+        preparedStatement.setTimestamp(8, Timestamp.valueOf(payment.getPaymentDateTime()));
         preparedStatement.executeUpdate();
     }
 
@@ -42,13 +42,12 @@ public class PaymentRepository implements Repository<Payment> {
         );
 
         preparedStatement.setString(1, payment.getTransactionType().name());
-//      add TransactionType
         preparedStatement.setString(2, payment.getPaymentType().name());
         preparedStatement.setInt(3, payment.getOrder().getId());
         preparedStatement.setInt(4, payment.getAmount());
         preparedStatement.setInt(5, payment.getCustomer().getId());
         preparedStatement.setInt(6, payment.getUser().getId());
-        preparedStatement.setTimestamp(7, Timestamp.valueOf(payment.getPaymentTime()));
+        preparedStatement.setTimestamp(7, Timestamp.valueOf(payment.getPaymentDateTime()));
         preparedStatement.setInt(8, payment.getId());
         preparedStatement.executeUpdate();
     }

@@ -1,6 +1,5 @@
 package model.entity;
 
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -11,16 +10,14 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-
 @Data
 @NoArgsConstructor
 @SuperBuilder
-//@ToString
 
 public class Order implements Serializable {
     private int id;
     private String orderSerial;
-    private Customer buyer;
+    private Customer customer;
     private User user;
     private OrderType orderType;
     List<OrderItem> orderItemList;
@@ -28,28 +25,33 @@ public class Order implements Serializable {
     private int pureAmount;
     List<Payment> paymentList;
     private LocalDateTime orderTime;
-//Test is Ok.
-    public int getOrderTotal(){
-        int total=0;
+
+
+    public int getOrderTotal() {
+        int total = 0;
         for (OrderItem orderItem : orderItemList) {
             total += orderItem.getItemTotal();
         }
-
         pureAmount = total - discount;
-        return  total;
+        return total;
     }
 
-    public void addItem(OrderItem orderItem){
-        if(orderItemList == null){
+    public void addItem(OrderItem orderItem) {
+        if (orderItemList == null) {
             orderItemList = new ArrayList<>();
         }
         orderItemList.add(orderItem);
+        orderItem.setOrder(this);
     }
 
-    public void addPayment(Payment payment){
-        if(paymentList == null){
+    public void addPayment(Payment payment) {
+        if (paymentList == null) {
             paymentList = new ArrayList<>();
         }
         paymentList.add(payment);
+
+    }
+    public String toString(){
+        return String.valueOf(id);
     }
 }

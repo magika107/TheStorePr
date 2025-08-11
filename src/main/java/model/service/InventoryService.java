@@ -55,4 +55,11 @@ public class InventoryService implements Service<Inventory> {
             return inventoryRepository.findById(id);
         }
     }
+
+    public Inventory findByProductId(int productId) throws Exception {
+        try (InventoryRepository inventoryRepository = new InventoryRepository()) {
+            return inventoryRepository.findByProductId(productId);
+        }
+    }
+
 }

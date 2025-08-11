@@ -1,6 +1,6 @@
 package model.repository;
 
-import model.entity.Bank;
+
 import model.entity.Inventory;
 import tools.ConnectionProvider;
 import tools.EntityMapper;
@@ -78,6 +78,20 @@ public class InventoryRepository implements Repository<Inventory> {
         }
         return inventory;
     }
+
+    public Inventory findByProductId(int productId) throws Exception {
+        Inventory inventory = null;
+        preparedStatement = connection.prepareStatement("SELECT * FROM inventories WHERE product_id = ?");
+        preparedStatement.setInt(1, productId);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()) {
+            inventory = EntityMapper.inventoryMapper(resultSet);
+        }
+        resultSet.close();
+        preparedStatement.close();
+        return inventory;
+    }
+
 
     @Override
     public void close() throws Exception {

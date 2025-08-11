@@ -1,15 +1,19 @@
 package model.service;
 
 import lombok.Getter;
-import model.entity.OrderItem;
-import model.entity.Order;
-import model.entity.Payment;
 
+import lombok.var;
+import model.entity.Inventory;
+import model.entity.Order;
+
+
+import model.entity.OrderItem;
 import model.repository.OrderRepository;
 
 import java.util.List;
 
 public class OrderService implements Service<Order> {
+
     @Getter
     private static OrderService service = new OrderService();
 
@@ -19,21 +23,15 @@ public class OrderService implements Service<Order> {
 
     @Override
     public void save(Order order) throws Exception {
-        try (OrderRepository orderRepository = new OrderRepository()) {
-
-            OrderItemService orderItemService = OrderItemService.getService();
-            PaymentService paymentService = PaymentService.getService();
-
-            for (OrderItem orderItem : order.getOrderItemList()) {
-                orderItem.setOrder(order);
-                orderItemService.save(orderItem);
+        try (OrderRepository repository = new OrderRepository()) {
+            if (repository.findById(order.getId()) == null) {
+                repository.save(order);
+            }else {
+                throw new Exception("Order already exists");
             }
 
-            for (Payment payment : order.getPaymentList()) {
-                payment.setOrder(order);
-                paymentService.save(payment);
-            }
         }
+
     }
 
     @Override
@@ -73,4 +71,6 @@ public class OrderService implements Service<Order> {
             return orderRepository.findById(id);
         }
     }
+
+
 }

@@ -6,7 +6,6 @@ import tools.EntityMapper;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class ProductRepository implements Repository<Product> {

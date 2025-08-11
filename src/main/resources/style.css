@@ -1,0 +1,277 @@
+/* ===========================
+   Tab Pane Styles
+=========================== */
+.main-tab-pane {
+    -fx-background-color: #f4f6f9;
+    -fx-tab-min-height: 35px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.tab-pane .tab-header-area {
+    -fx-background-color: #ecf0f1;
+}
+
+.tab-pane .tab-label {
+    -fx-font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    -fx-font-size: 13px;
+    -fx-text-fill: #2c3e50;
+}
+
+.tab-pane .tab {
+    -fx-padding: 8px 12px;
+    -fx-background-radius: 5px 5px 0 0;
+    -fx-border-radius: 5px 5px 0 0;
+    -fx-border-color: transparent transparent #ccc transparent;
+    -fx-border-width: 0 0 2px 0;
+    -fx-cursor: hand;
+}
+
+.tab-pane .tab:hover {
+    -fx-background-color: #d6e9f8;
+}
+
+.tab-pane .tab:selected {
+    -fx-border-color: #3498db;
+    -fx-background-color: #3498db;
+}
+
+.tab-pane .tab:selected .tab-label {
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+
+
+
+
+/* ===========================
+   Other Content Panes Backgrounds
+=========================== */
+
+.customer-content-pane {
+    -fx-background-color: #d0f0ea;
+    -fx-padding: 20px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.user-content-pane {
+    -fx-background-color: #eaf2f8;
+    -fx-padding: 20px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.product-content-pane {
+    -fx-background-color: #e8dff5;
+    -fx-padding: 20px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.order-content-pane {
+    -fx-background-color: #fce8d8;
+    -fx-padding: 20px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.inventory-content-pane {
+    -fx-background-color: #d6f5d6;
+    -fx-padding: 20px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.order-item-content-pane {
+    -fx-background-color: #d8e8f9;
+    -fx-padding: 20px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.bank-content-pane {
+    -fx-background-color: #d8e8f9;
+    -fx-padding: 20px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.payment-content-pane {
+    -fx-background-color: #f39c12;
+    -fx-padding: 20px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+
+/* ===========================
+   Selected Tab Colors (غیر payment)
+=========================== */
+
+
+.tab.user-tab:selected {
+    -fx-background-color: #2980b9;
+}
+
+.tab.user-tab:selected .tab-label {
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+
+.tab.customer-tab:selected {
+    -fx-background-color: #16a085;
+}
+
+.tab.customer-tab:selected .tab-label {
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+
+.tab.product-tab:selected {
+    -fx-background-color: #8e44ad;
+}
+
+.tab.product-tab:selected .tab-label {
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+
+.tab.order-tab:selected {
+    -fx-background-color: #d35400;
+}
+
+.tab.order-tab:selected .tab-label {
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+
+.tab.order-item-tab:selected {
+    -fx-background-color: #5dade2;
+}
+
+.tab.order-item-tab:selected .tab-label {
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+
+.tab.inventory-tab:selected {
+    -fx-background-color: #27ae60;
+}
+
+.tab.inventory-tab:selected .tab-label {
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+
+.tab.bank-tab:selected {
+    -fx-background-color: #27ae60;
+}
+
+.tab.bank-tab:selected .tab-label {
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+
+.tab.payment-tab:selected .tab-label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.tab.payment-tab:selected {
+    -fx-background-color: #e67e22; /* نارنجی متوسط */
+}
+
+/* ===========================
+   TableView Styles
+=========================== */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #ccc;
+    -fx-border-width: 1px;
+    -fx-table-cell-border-color: transparent;
+    -fx-padding: 10px;
+    -fx-font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    -fx-font-size: 13px;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #f9f9f9;
+}
+
+.table-row-cell:even {
+    -fx-background-color: white;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+}
+
+.table-column-header {
+    -fx-background-color: #2980b9;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER;
+}
+
+/* ===========================
+   ScrollBar Styles
+=========================== */
+.scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-padding: 0 5px 0 0;
+}
+
+.scroll-bar:horizontal {
+    -fx-background-color: transparent;
+    -fx-padding: 5px 0 0 0;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #3498db;
+    -fx-background-insets: 0;
+    -fx-background-radius: 10px;
+}
+
+/* ===========================
+   Buttons
+=========================== */
+.button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+    -fx-padding: 6px 12px;
+    -fx-font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    -fx-font-size: 13px;
+}
+
+.button:hover {
+    -fx-background-color: #2980b9;
+}
+
+/* ===========================
+   Focused Input Fields
+=========================== */
+.text-field:focused,
+.combo-box:focused,
+.date-picker:focused {
+    -fx-border-color: #3498db;
+    -fx-border-width: 2px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+}
+
+/* ===========================
+   Tooltip
+=========================== */
+.tool-tip {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-padding: 5px;
+    -fx-background-radius: 5px;
+}

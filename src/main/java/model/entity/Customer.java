@@ -1,6 +1,6 @@
 package model.entity;
 
-import com.google.gson.Gson;
+
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -15,4 +15,8 @@ import java.io.Serializable;
 
 public class Customer extends Person implements Serializable {
     private int id;
+
+    public String toString(){
+        return String.valueOf(id);
+    }
 }
